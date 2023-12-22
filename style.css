@@ -1,0 +1,39 @@
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-y: scroll;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.box {
+    width: 100%;
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: var(--box-color, #fff); /* Default color */
+}
+
+a.box {
+    text-decoration: none;
+    color: inherit;
+}
+
+@media screen and (max-width: 600px) {
+    .box {
+        width: 90%;
+    }
+}
