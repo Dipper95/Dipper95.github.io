@@ -1,6 +1,6 @@
 
 function goToPage1() {
-    window.location.href = 'secondary1.html';
+    window.location.href = 'shougongji.html';
 }
 function goToPage2() {
     window.location.href = 'secondary2.html';
