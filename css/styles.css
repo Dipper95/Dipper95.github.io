@@ -1,0 +1,438 @@
+/**
+ * 原型托管平台主样式
+ */
+
+/* 变量定义 */
+:root {
+    /* 颜色 */
+    --primary-color: #818CF8;
+    --primary-rgb: 129, 140, 248;
+    --secondary-color: #34D399;
+    --secondary-rgb: 52, 211, 153;
+    --text-color: #6B7280;
+    --text-light: #9CA3AF;
+    --bg-color: #F9FAFB;
+    --card-bg: #FFFFFF;
+    --border-color: #E5E7EB;
+    --input-bg: #F3F4F6;
+    
+    /* 间距 */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    
+    /* 圆角 */
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    
+    /* 阴影 */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 容器 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+/* 导航栏 */
+.navbar {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    background-color: var(--card-bg);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border-color);
+    width: 100%;
+}
+
+.navbar-content {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    letter-spacing: -0.5px;
+    text-align: left;
+}
+
+.nav-links {
+    display: none;
+}
+
+/* 区块标题 */
+.section-header {
+    display: none;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: var(--spacing-xl) 0;
+    text-align: left;
+}
+
+h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-color);
+}
+
+/* 卡片网格 */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    padding: 0 var(--spacing-md);
+}
+
+/* 卡片 */
+.card {
+    position: relative;
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: pointer;
+    min-height: 200px;
+    border: 1px solid var(--border-color);
+}
+
+.card:hover {
+    transform: translateY(-12px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card[data-color="green"]::after,
+.card[data-color="blue"]::after,
+.card[data-color="purple"]::after,
+.card[data-color="red"]::after,
+.card[data-color="pink"]::after {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    opacity: 0.1;
+    z-index: 0;
+    transition: all 0.5s ease;
+}
+
+.card[data-color="green"]::after {
+    background: var(--secondary-color);
+    bottom: -40px;
+    right: -40px;
+}
+
+.card[data-color="blue"]::after {
+    background: #3B82F6;
+    top: -40px;
+    right: -40px;
+}
+
+.card[data-color="purple"]::after {
+    background: #8B5CF6;
+    bottom: -40px;
+    left: -40px;
+}
+
+.card[data-color="pink"]::after {
+    background: #EC4899;
+    top: -40px;
+    left: -40px;
+}
+
+.card[data-color="red"]::after {
+    background: #f31e02;
+    top: -40px;
+    left: -40px;
+}
+
+.card:hover::after {
+    transform: scale(1.2);
+    opacity: 0.15;
+}
+
+.card-content {
+    padding: var(--spacing-xl);
+    position: relative;
+    z-index: 1;
+}
+
+/* 置顶按钮 */
+.pin-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    color: var(--text-light);
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.pin-button:hover {
+    background-color: rgba(var(--primary-rgb), 0.1);
+    color: var(--primary-color);
+}
+
+.pin-button.pinned {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 2px 8px rgba(var(--primary-rgb), 0.4);
+}
+
+.pinned-label {
+    display: none;
+}
+
+/* 置顶卡片 */
+.pinned-card {
+    border: 2px solid var(--primary-color) !important;
+    box-shadow: 0 10px 30px rgba(var(--primary-rgb), 0.1);
+    position: relative;
+}
+
+.pinned-card::before {
+    content: '已置顶';
+    position: absolute;
+    top: 15px;
+    left: 0;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 12px 4px 16px;
+    border-radius: 0 6px 6px 0;
+    z-index: 5;
+    letter-spacing: 0.5px;
+}
+
+.pinned-card .card-content h3 {
+    margin-top: 20px;
+    text-align: left;
+}
+
+/* 置顶区域 */
+.pinned-section {
+    margin-bottom: var(--spacing-xl);
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: var(--spacing-xl);
+}
+
+.pinned-section h3 {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+    font-weight: 600;
+    font-size: 18px;
+    padding: 0 var(--spacing-md);
+}
+
+.pinned-section h3 svg {
+    fill: currentColor;
+    width: 18px;
+    height: 18px;
+}
+
+/* 版本卡片 */
+.version-card {
+    background: var(--card-bg);
+    cursor: pointer;
+    position: relative;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-color);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.version-card:hover {
+    transform: translateY(-12px);
+    box-shadow: var(--shadow-lg);
+}
+
+.version-card .card-content {
+    padding: 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 60px; /* 为查看原型按钮留出空间 */
+}
+
+.version-card h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    padding-right: 40px;
+    color: var(--primary-color);
+    text-align: left;
+}
+
+.version-card.pinned-card h3 {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.version-description {
+    color: var(--text-light);
+    margin: var(--spacing-sm) 0 var(--spacing-md);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.version-info {
+    font-size: 12px;
+    color: var(--text-light);
+    display: none;
+}
+
+.view-prototype {
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: var(--primary-color);
+    padding: 8px 14px;
+    border-radius: var(--radius-md);
+    background-color: rgba(var(--primary-rgb), 0.1);
+    transition: all 0.3s;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.version-card:hover .view-prototype {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.view-prototype svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* 标题容器 */
+.title-container {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin: var(--spacing-xl) 0;
+}
+
+.title-with-back {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: var(--radius-md);
+    transition: all 0.3s;
+}
+
+.title-with-back:hover {
+    background-color: rgba(var(--primary-rgb), 0.05);
+}
+
+.version-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+    position: relative;
+    z-index: 1;
+    padding-left: 8px;
+}
+
+/* 返回图标 */
+.back-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    transition: all 0.3s;
+}
+
+.title-with-back:hover .back-icon {
+    color: var(--primary-color);
+}
+
+.back-icon svg {
+    width: 16px;
+    height: 16px;
+    stroke-width: 2;
+}
+
+/* 按钮 */
+.btn {
+    display: none;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-md);
+    }
+} 

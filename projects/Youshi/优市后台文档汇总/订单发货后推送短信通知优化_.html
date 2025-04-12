@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>订单发货后推送短信通知优化#</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/订单发货后推送短信通知优化_/styles.css" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-3.2.1.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
+    <script src="data/document.js"></script>
+    <script src="files/订单发货后推送短信通知优化_/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body>
+    <div id="base" class="">
+
+      <!-- Unnamed (矩形) -->
+      <div id="u90348" class="ax_default flow_shape">
+        <div id="u90348_div" class=""></div>
+        <div id="u90348_text" class="text ">
+          <p><span>订单状态由待发货状态改为待收货状态时</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u90349" class="ax_default flow_shape">
+        <div id="u90349_div" class=""></div>
+        <div id="u90349_text" class="text ">
+          <p><span>程序：调用短信接口，给该订单买家发短信</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (连接) -->
+      <div id="u90350" class="ax_default _连接线">
+        <img id="u90350_seg0" class="img " src="images/订单发货后推送短信通知优化_/u90350_seg0.svg" alt="u90350_seg0"/>
+        <img id="u90350_seg1" class="img " src="images/订单发货后推送短信通知优化_/u90350_seg1.svg" alt="u90350_seg1"/>
+        <div id="u90350_text" class="text " style="display:none; visibility: hidden">
+          <p></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u90351" class="ax_default paragraph">
+        <div id="u90351_div" class=""></div>
+        <div id="u90351_text" class="text ">
+          <p><span>短信模板</span><span style="color:#FF0000;">：【优市】您的订单{订单首个商品名.....}共{订单总商品件数X}件商品已经发货，物流：{物流公司名}，单号：{物流单号}，请查收，https://h5.lai-ai.com/umart-open/index.html?targetType=1&amp;code=order_detail&amp;targetSource=${target_source}</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u90352" class="ax_default heading_3">
+        <div id="u90352_div" class=""></div>
+        <div id="u90352_text" class="text ">
+          <p><span style="color:#1E1E1E;">1、订单首个商品名：不超过16个，超过....</span></p><p><span style="color:#1E1E1E;">2、</span><span>订单总商品件数X：该订单的商品数量，整数</span></p><p><span>3、物流公司名称：不超过10个字，超过...</span></p><p><span>4、物流单号：显示该订单物流单号</span></p><p><span><br></span></p><p><span style="color:#FF0000;"><br></span></p><p><span style="color:#FF0000;">2、点击短信链接，若用户有下载APP，点击打开APP，跳转至该订单详情页，若用户未下载APP，则打开H5页面，跳转至该订单详情页。</span></p><p><span style="color:#1E1E1E;"><br></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u90353" class="ax_default label">
+        <div id="u90353_div" class=""></div>
+        <div id="u90353_text" class="text ">
+          <p><span style="color:#000000;">涉及优市所有订单，包含平台发货、</span><span style="color:#FF0000;">供应商发货的所有订单</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u90354" class="ax_default heading_3">
+        <div id="u90354_div" class=""></div>
+        <div id="u90354_text" class="text ">
+          <p><span>说明：</span></p><p><span><br></span></p>
+        </div>
+      </div>
+    </div>
+    <script src="resources/scripts/axure/ios.js"></script>
+  </body>
+</html>

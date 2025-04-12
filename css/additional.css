@@ -1,0 +1,187 @@
+/**
+ * 额外的CSS样式
+ * 包含表单元素和动画样式
+ */
+
+/* 表单样式 */
+.upload-form {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 30px;
+}
+
+.upload-form h3 {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.form-group input[type="text"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    font-size: 14px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.2);
+    outline: none;
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 40px;
+}
+
+.file-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius-md);
+    background-color: var(--input-bg);
+    transition: border-color 0.3s;
+    cursor: pointer;
+}
+
+.file-input:hover {
+    border-color: var(--primary-color);
+}
+
+.file-input input[type="file"] {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.form-actions .btn {
+    min-width: 100px;
+}
+
+.form-actions .btn:first-child {
+    background-color: var(--input-bg);
+    color: var(--text-color);
+}
+
+.form-actions .btn:first-child:hover {
+    background-color: var(--border-color);
+}
+
+/* 加载动画 */
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.loading-spinner {
+    width: 30px;
+    height: 30px;
+    border: 3px solid rgba(var(--primary-rgb), 0.3);
+    border-radius: 50%;
+    border-top-color: var(--primary-color);
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 卡片动画 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+.card:nth-child(2) { animation-delay: 0.05s; }
+.card:nth-child(3) { animation-delay: 0.1s; }
+.card:nth-child(4) { animation-delay: 0.15s; }
+.card:nth-child(5) { animation-delay: 0.2s; }
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .upload-form {
+        padding: 16px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .form-actions .btn {
+        width: 100%;
+    }
+}
+
+/* 暗色模式 */
+@media (prefers-color-scheme: dark) {
+    .file-input {
+        border-color: var(--border-color-dark);
+        background-color: var(--input-bg-dark);
+    }
+    
+    .form-group input[type="text"],
+    .form-group textarea,
+    .form-group select {
+        border-color: var(--border-color-dark);
+        background-color: var(--input-bg-dark);
+    }
+    
+    .form-actions .btn:first-child {
+        background-color: var(--input-bg-dark);
+        color: var(--text-color-dark);
+    }
+    
+    .form-actions .btn:first-child:hover {
+        background-color: var(--border-color-dark);
+    }
+} 

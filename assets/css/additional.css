@@ -1,0 +1,132 @@
+/**
+ * 额外的CSS样式
+ * 包含上传表单和加载动画的样式
+ */
+
+/* 上传表单样式 */
+.upload-form {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    font-size: 14px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.2);
+    outline: none;
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.file-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border: 2px dashed var(--border-color);
+    border-radius: 6px;
+    background-color: var(--input-bg);
+    transition: border-color 0.3s;
+    cursor: pointer;
+}
+
+.file-input:hover {
+    border-color: var(--primary-color);
+}
+
+.file-input input[type="file"] {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.form-actions .btn {
+    min-width: 100px;
+}
+
+/* 加载动画 */
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.loading-spinner {
+    width: 30px;
+    height: 30px;
+    border: 3px solid rgba(var(--primary-rgb), 0.3);
+    border-radius: 50%;
+    border-top-color: var(--primary-color);
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .upload-form {
+        padding: 16px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .form-actions .btn {
+        width: 100%;
+    }
+}
+
+/* 暗色模式调整 */
+@media (prefers-color-scheme: dark) {
+    .file-input {
+        border-color: var(--border-color-dark);
+        background-color: var(--input-bg-dark);
+    }
+    
+    .form-group input[type="text"],
+    .form-group textarea {
+        border-color: var(--border-color-dark);
+        background-color: var(--input-bg-dark);
+    }
+} 
