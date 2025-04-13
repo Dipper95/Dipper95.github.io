@@ -29,6 +29,9 @@ function createAuthToken() {
 
 // 显示密码输入框
 function showPasswordDialog() {
+    // 先隐藏所有内容
+    document.querySelector('.container').style.display = 'none';
+    
     const dialog = document.createElement('div');
     dialog.className = 'password-dialog';
     dialog.innerHTML = `
@@ -50,7 +53,7 @@ function showPasswordDialog() {
         if (input.value === PASSWORD) {
             localStorage.setItem(STORAGE_KEY, createAuthToken());
             dialog.remove();
-            document.body.style.overflow = 'auto';
+            document.querySelector('.container').style.display = 'block';
         } else {
             error.textContent = '密码错误，请重试';
             input.value = '';
@@ -63,17 +66,16 @@ function showPasswordDialog() {
             submit.click();
         }
     });
-
-    // 阻止滚动
-    document.body.style.overflow = 'hidden';
 }
 
 // 初始化认证
 function initAuth() {
     if (!checkAuth()) {
         showPasswordDialog();
+    } else {
+        document.querySelector('.container').style.display = 'block';
     }
 }
 
-// 页面加载完成后初始化
-document.addEventListener('DOMContentLoaded', initAuth); 
+// 立即执行认证检查
+initAuth(); 
