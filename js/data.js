@@ -31,8 +31,7 @@
  * 3. 确保每个原型的 URL 路径正确，可以正常访问
  */
 
-// 项目数据
-// 替换此数组为您自己的项目和版本数据
+// 项目数据 - 版本 2024.05.13.02
 const projects = [
     {
         id: 1,
@@ -41,6 +40,7 @@ const projects = [
         isPinned: true,
         requireAuth: true,
         password: "wanghaoqiang227",
+        hidden: true, // 隐藏此项目
         versions: [
             {
                 id: "v25.3.2型号数据优化",
@@ -162,6 +162,7 @@ const projects = [
         isPinned: false,
         requireAuth: true,
         password: "wanghaoqiang227",
+        hidden: true, // 隐藏此项目
         versions: [
             {
                 id: "v3.1",
@@ -200,6 +201,7 @@ const projects = [
         isPinned: false,
         requireAuth: true,
         password: "wanghaoqiang227",
+        hidden: true, // 隐藏此项目
         versions: [
             {
                 id: "总后台汇总",
@@ -231,6 +233,7 @@ const projects = [
         isPinned: false,
         requireAuth: true,
         password: "wanghaoqiang227",
+        hidden: true, // 隐藏此项目
         versions: [
             {
                 id: "总后台汇总",
@@ -262,6 +265,7 @@ const projects = [
         isPinned: false,
         requireAuth: true,
         password: "wanghaoqiang227",
+        hidden: true, // 隐藏此项目
         versions: [
             {
                 id: "优市后台总文档汇总",
@@ -286,6 +290,7 @@ const projects = [
         isPinned: false,
         requireAuth: false,
         password: "",
+        hidden: false, // 不隐藏此项目
         versions: [
             {
                 id: "电商项目-app/小程序",

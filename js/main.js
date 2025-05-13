@@ -16,18 +16,20 @@ function renderProjects() {
     // 显示项目列表标题
     document.querySelector('h2').style.display = 'block';
     
-    // 只显示app/小程序原型项目
-    const appProjects = projects.filter(project => project.name === "app/小程序原型");
+    // 过滤项目：只显示app/小程序原型项目，且确保它没有被隐藏
+    const visibleProjects = projects.filter(project => 
+        project.name === "app/小程序原型" && project.hidden !== true
+    );
     
-    // 如果找到了app/小程序原型项目
-    if (appProjects.length > 0) {
-        appProjects.forEach(project => {
+    // 如果找到了可见项目
+    if (visibleProjects.length > 0) {
+        visibleProjects.forEach(project => {
             const projectCard = createProjectCard(project);
             projectsGrid.appendChild(projectCard);
         });
     } else {
-        // 如果没有找到app/小程序原型项目，显示提示信息
-        projectsGrid.innerHTML = '<div class="empty-message">没有找到app/小程序原型项目</div>';
+        // 如果没有找到可见项目，显示提示信息
+        projectsGrid.innerHTML = '<div class="empty-message">没有找到可显示的项目</div>';
     }
 }
 
