@@ -288,7 +288,7 @@ const projects = [
     },
     {
         id: 6,
-        name: "app/小程序原型",
+        name: "app小程序原型",
         color: "#0077cc",
         isPinned: false,
         requireAuth: false,
@@ -297,20 +297,13 @@ const projects = [
         versions: [
             {
                 id: 1,
-                description: "新版UI设计展示",
+                description: "Craft4U-app",
                 updateDate: "2024年5月13日",
-                url: "https://dipper95.github.io/app_prototype/",
+                url: "projects/app小程序原型/Craft4U_app/index.html",
                 isPinned: false
             },
             {
                 id: 2,
-                description: "产品功能演示",
-                updateDate: "2024年5月13日",
-                url: "https://dipper95.github.io/app_feature_demo/",
-                isPinned: false
-            },
-            {
-                id: 3,
                 description: "本地原型文件示例",
                 updateDate: "2024年5月14日",
                 url: "projects/app小程序原型/您的版本名称/index.html",
