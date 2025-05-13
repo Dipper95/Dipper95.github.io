@@ -3,31 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>原型托管平台</title>
+    <title>app/小程序原型托管平台</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/additional.css">
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-    <script src="js/auth.js" defer></script>
 </head>
 <body>
-    <div id="auth-overlay" style="display: none;"></div>
-    
     <nav class="navbar">
         <div class="navbar-content">
-            <div class="logo">原型托管平台</div>
+            <div class="logo">原型托管平台 - app/小程序原型专区</div>
         </div>
     </nav>
     
-    <div class="container" style="display: none;">
-        <header>
-            <h1>原型托管平台</h1>
-        </header>
-        <main>
-            <div class="projects-container"></div>
-        </main>
+    <div class="container">
+        <h2>app/小程序原型列表</h2>
+        
+        <section id="projects">
+            <div class="card-grid" id="projects-grid">
+                <!-- 项目卡片将通过JavaScript动态加载 -->
+            </div>
+        </section>
     </div>
     
-    <script src="js/data.js" defer></script>
-    <script src="js/main.js" defer></script>
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html> 

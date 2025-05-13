@@ -11,6 +11,8 @@
  * - name: 项目名称
  * - color: 项目颜色（可选值: "blue", "green", "purple", "pink"）
  * - isPinned: 是否置顶（布尔值，true 或 false）
+ * - requireAuth: 是否需要认证（布尔值，true 或 false）
+ * - password: 认证密码（字符串）
  * - versions: 版本数组，包含该项目的所有版本
  *   - id: 版本号（如 "v1.0"）
  *   - description: 版本描述
@@ -33,6 +35,8 @@ const projects = [
         name: "切膜机项目",
         color: "blue",
         isPinned: true,
+        requireAuth: true,
+        password: "wanghaoqiang227",
         versions: [
             {
                 id: "v25.3.2型号数据优化",
@@ -152,6 +156,8 @@ const projects = [
         name: "手工机项目",
         color: "green",
         isPinned: false,
+        requireAuth: true,
+        password: "wanghaoqiang227",
         versions: [
             {
                 id: "v3.1",
@@ -188,6 +194,8 @@ const projects = [
         name: "标签机项目",
         color: "purple",
         isPinned: false,
+        requireAuth: true,
+        password: "wanghaoqiang227",
         versions: [
             {
                 id: "总后台汇总",
@@ -217,6 +225,8 @@ const projects = [
         name: "首信易支付",
         color: "pink",
         isPinned: false,
+        requireAuth: true,
+        password: "wanghaoqiang227",
         versions: [
             {
                 id: "总后台汇总",
@@ -246,6 +256,8 @@ const projects = [
         name: "优市",
         color: "red",
         isPinned: false,
+        requireAuth: true,
+        password: "wanghaoqiang227",
         versions: [
             {
                 id: "优市后台总文档汇总",
@@ -262,6 +274,30 @@ const projects = [
                 isPinned: false
             }
         ]
+    },
+    {
+        id: 6,
+        name: "app/小程序原型",
+        color: "red",
+        isPinned: false,
+        requireAuth: false,
+        password: "",
+        versions: [
+            {
+                id: "电商项目-app/小程序",
+                description: "电商app/小程序",
+                updateDate: "2022-12-22",
+                url: "projects/app小程序原型/index.html",
+                isPinned: false
+            },
+            {
+                id: "Craft_4U-app",
+                description: "手工机app端",
+                updateDate: "2023-12-30",
+                url: "projects/app小程序原型/Craft4U_app/index.html",
+                isPinned: false
+            }
+        ]
     }
 ];
 
@@ -273,6 +309,8 @@ const projects = [
  *     name: "您的项目名称",
  *     color: "pink",  // 可选: "blue", "green", "purple", "pink"
  *     isPinned: false,
+ *     requireAuth: false,
+ *     password: "",
  *     versions: [
  *         {
  *             id: "版本名称",

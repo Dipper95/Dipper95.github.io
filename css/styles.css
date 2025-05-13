@@ -435,4 +435,86 @@ h3 {
         align-items: flex-start;
         gap: var(--spacing-md);
     }
+}
+
+/* 添加锁图标样式 */
+.lock-icon {
+    margin-left: 8px;
+    font-size: 14px;
+}
+
+/* 密码对话框样式 */
+.password-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.password-dialog-content {
+    background-color: white;
+    border-radius: 8px;
+    padding: 24px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.password-dialog-content h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    color: #333;
+}
+
+.password-dialog-content p {
+    margin-bottom: 16px;
+    color: #666;
+}
+
+.password-dialog-content input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    font-size: 16px;
+}
+
+.password-dialog-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.password-dialog-buttons button {
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 8px;
+}
+
+.password-dialog-buttons .cancel-button {
+    background-color: transparent;
+    border: 1px solid #ddd;
+    color: #666;
+}
+
+.password-dialog-buttons .confirm-button {
+    background-color: #4a6cf7;
+    border: none;
+    color: white;
+}
+
+.password-dialog-buttons .cancel-button:hover {
+    background-color: #f5f5f5;
+}
+
+.password-dialog-buttons .confirm-button:hover {
+    background-color: #3a5ce7;
 } 

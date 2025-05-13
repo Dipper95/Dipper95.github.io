@@ -11,49 +11,97 @@ function renderProjects() {
     // 显示项目列表标题
     document.querySelector('h2').style.display = 'block';
     
-    // 检查是否有置顶项目
-    const pinnedProjects = projects.filter(project => project.isPinned);
-    if (pinnedProjects.length > 0) {
-        // 创建置顶区域
-        const pinnedSection = document.createElement('div');
-        pinnedSection.className = 'pinned-section';
-        pinnedSection.id = 'pinned-projects';
-        
-        const sectionTitle = document.createElement('h3');
-        sectionTitle.innerHTML = `
-            <svg width="16" height="16" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-                <path d="M878.3 392.1L631.9 145.7c-6.5-6.5-15-9.7-23.5-9.7s-17 3.2-23.5 9.7L423.8 306.9c-12.2-1.4-24.5-2-36.8-2-73.2 0-146.4 24.1-206.5 72.3-15.4 12.3-16.6 35.4-2.7 49.4l181.7 181.7-215.4 215.2c-2.6 2.6-4.3 6.1-4.3 9.8 0 3.7 1.7 7.2 4.3 9.8l68.2 68.2c2.6 2.6 6.1 4.3 9.8 4.3 3.7 0 7.2-1.7 9.8-4.3l215.4-215.4 181.7 181.7c6.5 6.5 15 9.7 23.5 9.7 9.7 0 19.3-4.2 25.9-12.4 56.3-70.3 79.7-158.3 70.2-243.4l161.1-161.1c12.9-12.8 12.9-33.8 0-46.8z" fill="currentColor"/>
-            </svg>
-            置顶项目
-        `;
-        
-        pinnedSection.appendChild(sectionTitle);
-        
-        const pinnedGrid = document.createElement('div');
-        pinnedGrid.className = 'card-grid';
-        pinnedSection.appendChild(pinnedGrid);
-        
-        // 渲染置顶项目
-        pinnedProjects.forEach(project => {
-            const projectCard = createProjectCard(project);
-            pinnedGrid.appendChild(projectCard);
-        });
-        
-        // 将置顶区域添加到页面
-        const projectsSection = document.getElementById('projects');
-        projectsSection.insertBefore(pinnedSection, projectsSection.firstChild);
-    }
+    // 只显示app/小程序原型项目
+    const appProjects = projects.filter(project => project.name === "app/小程序原型");
     
-    // 渲染未置顶项目
-    const unpinnedProjects = projects.filter(project => !project.isPinned);
-    unpinnedProjects.forEach(project => {
-        const projectCard = createProjectCard(project);
-        projectsGrid.appendChild(projectCard);
+    // 如果找到了app/小程序原型项目
+    if (appProjects.length > 0) {
+        appProjects.forEach(project => {
+            const projectCard = createProjectCard(project);
+            projectsGrid.appendChild(projectCard);
+        });
+    } else {
+        // 如果没有找到app/小程序原型项目，显示提示信息
+        projectsGrid.innerHTML = '<div class="empty-message">没有找到app/小程序原型项目</div>';
+    }
+}
+
+// 创建密码输入对话框
+function createPasswordDialog(project) {
+    const dialog = document.createElement('div');
+    dialog.className = 'password-dialog';
+    dialog.innerHTML = `
+        <div class="password-dialog-content">
+            <h3>请输入密码</h3>
+            <p>${project.name} 需要密码访问</p>
+            <input type="password" id="password-input" placeholder="请输入密码">
+            <div class="password-dialog-buttons">
+                <button class="cancel-button">取消</button>
+                <button class="confirm-button">确认</button>
+            </div>
+            <div class="password-error" style="display: none; color: red; margin-top: 10px;"></div>
+        </div>
+    `;
+
+    // 添加事件监听器
+    const confirmButton = dialog.querySelector('.confirm-button');
+    const cancelButton = dialog.querySelector('.cancel-button');
+    const passwordInput = dialog.querySelector('#password-input');
+    const errorDiv = dialog.querySelector('.password-error');
+
+    confirmButton.addEventListener('click', () => {
+        const password = passwordInput.value;
+        if (password === project.password) {
+            // 密码正确，显示版本列表
+            dialog.remove();
+            renderVersions(project);
+        } else {
+            // 密码错误，显示错误信息
+            errorDiv.textContent = '密码错误，请重试';
+            errorDiv.style.display = 'block';
+            passwordInput.value = '';
+            passwordInput.focus();
+        }
     });
+
+    cancelButton.addEventListener('click', () => {
+        dialog.remove();
+    });
+
+    // 按回车键确认
+    passwordInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            confirmButton.click();
+        }
+    });
+
+    // 点击对话框外部关闭
+    dialog.addEventListener('click', (event) => {
+        if (event.target === dialog) {
+            dialog.remove();
+        }
+    });
+
+    document.body.appendChild(dialog);
+    passwordInput.focus();
 }
 
 // 创建项目卡片
 function createProjectCard(project) {
+    console.log('创建项目卡片:', project.name, '需要认证:', project.requireAuth, '密码:', project.password);
+    
+    // 确保requireAuth属性存在，默认为true（除了app/小程序原型）
+    if (project.requireAuth === undefined) {
+        project.requireAuth = (project.name !== "app/小程序原型");
+        console.log('设置默认requireAuth:', project.name, project.requireAuth);
+    }
+    
+    // 确保密码存在，默认为wanghaoqiang227
+    if (project.requireAuth && (!project.password || project.password === "")) {
+        project.password = "wanghaoqiang227";
+        console.log('设置默认密码:', project.name);
+    }
+    
     const card = document.createElement('div');
     card.className = `card ${project.isPinned ? 'pinned-card' : ''}`;
     card.setAttribute('data-color', project.color);
@@ -68,13 +116,18 @@ function createProjectCard(project) {
         <div class="card-content">
             <h3>${project.name}</h3>
             <p>${project.versions.length} 个版本</p>
+            ${project.requireAuth ? '<span class="lock-icon">🔒</span>' : ''}
         </div>
     `;
     
     // 添加点击事件
     card.addEventListener('click', (event) => {
         if (!event.target.closest('.pin-button')) {
-            renderVersions(project);
+            if (project.requireAuth) {
+                createPasswordDialog(project);
+            } else {
+                renderVersions(project);
+            }
         }
     });
     
