@@ -6,10 +6,10 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <meta name="force-cache-update" content="2024-05-13T15:45:00">
+    <meta name="force-cache-update" content="2024-05-13T16:30:00">
     <title>app/小程序原型托管平台</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/additional.css">
+    <link rel="stylesheet" href="css/styles.css?v=20240513163000">
+    <link rel="stylesheet" href="css/additional.css?v=20240513163000">
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <script>
         // 清除localStorage中的可能影响显示的数据
@@ -21,6 +21,21 @@
             caches.keys().then(function(names) {
                 for (let name of names) caches.delete(name);
             });
+        }
+        
+        // 检查是否需要强制刷新页面
+        try {
+            const lastVisit = localStorage.getItem('lastVisitTimestamp');
+            const currentTime = new Date().getTime();
+            localStorage.setItem('lastVisitTimestamp', currentTime);
+            
+            // 如果上次访问超过5分钟或者是首次访问，强制刷新
+            if (!lastVisit || (currentTime - lastVisit > 5 * 60 * 1000)) {
+                console.log('强制刷新页面以更新缓存');
+                window.location.reload(true);
+            }
+        } catch (e) {
+            console.error('检查刷新逻辑错误:', e);
         }
         
         // 生成当前时间戳，用于防止缓存
