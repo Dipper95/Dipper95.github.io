@@ -293,6 +293,7 @@ const projects = [
         isPinned: false,
         requireAuth: false,
         password: "",
+        hidden: false,
         versions: [
             {
                 id: 1,
@@ -307,6 +308,14 @@ const projects = [
                 updateDate: "2024年5月13日",
                 url: "https://dipper95.github.io/app_feature_demo/",
                 isPinned: false
+            },
+            {
+                id: 3,
+                description: "本地原型文件示例",
+                updateDate: "2024年5月14日",
+                url: "projects/app小程序原型/您的版本名称/index.html",
+                isPinned: false,
+                note: "上传本地原型后，请替换'您的版本名称'为实际文件夹名称"
             }
         ]
     }
