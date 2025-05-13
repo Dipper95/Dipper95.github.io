@@ -58,7 +58,7 @@
     <nav class="navbar">
         <div class="navbar-content">
             <div class="logo">原型托管平台 - app/小程序原型专区</div>
-            <div style="font-size: 12px; color: #999;">v2024.05.13.02</div>
+            <div style="font-size: 12px; color: #999;">v2024.05.13.03</div>
         </div>
     </nav>
     
@@ -71,5 +71,34 @@
             </div>
         </section>
     </div>
+    
+    <!-- 添加直接引用脚本的方式，以防动态加载失败 -->
+    <script id="debug-script">
+        console.log('页面加载完成，正在执行调试脚本...');
+        // 检查是否已经有项目显示
+        setTimeout(function() {
+            const projectGrid = document.getElementById('projects-grid');
+            if (projectGrid && (!projectGrid.children || projectGrid.children.length === 0)) {
+                console.log('未检测到项目加载，尝试直接加载脚本');
+                // 直接加载脚本
+                const dataScript = document.createElement('script');
+                dataScript.src = 'js/data.js?v=' + new Date().getTime();
+                document.head.appendChild(dataScript);
+                
+                dataScript.onload = function() {
+                    const mainScript = document.createElement('script');
+                    mainScript.src = 'js/main.js?v=' + new Date().getTime();
+                    document.head.appendChild(mainScript);
+                    
+                    mainScript.onload = function() {
+                        console.log('直接加载完成，尝试渲染');
+                        if (typeof renderProjects === 'function') {
+                            renderProjects();
+                        }
+                    };
+                };
+            }
+        }, 3000); // 3秒后检查
+    </script>
 </body>
 </html> 

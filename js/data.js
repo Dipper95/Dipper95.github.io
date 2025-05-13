@@ -1,3 +1,6 @@
+// 版本: v2024.05.13.03
+console.log("data.js 加载完成");
+
 /**
  * 原型托管平台数据 - 版本 2024.05.13.01
  * 这个文件包含项目和版本的数据结构
@@ -286,24 +289,23 @@ const projects = [
     {
         id: 6,
         name: "app/小程序原型",
-        color: "red",
+        color: "#0077cc",
         isPinned: false,
         requireAuth: false,
         password: "",
-        hidden: false, // 不隐藏此项目
         versions: [
             {
-                id: "电商项目-app/小程序",
-                description: "电商app/小程序",
-                updateDate: "2022-12-22",
-                url: "projects/app小程序原型/index.html",
+                id: 1,
+                description: "新版UI设计展示",
+                updateDate: "2024年5月13日",
+                url: "https://dipper95.github.io/app_prototype/",
                 isPinned: false
             },
             {
-                id: "Craft_4U-app",
-                description: "手工机app端",
-                updateDate: "2023-12-30",
-                url: "projects/app小程序原型/Craft4U_app/index.html",
+                id: 2,
+                description: "产品功能演示",
+                updateDate: "2024年5月13日",
+                url: "https://dipper95.github.io/app_feature_demo/",
                 isPinned: false
             }
         ]

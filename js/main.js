@@ -8,18 +8,34 @@
  * const appProjects = projects.filter(project => project.name === "app/小程序原型");
  */
 
+// 版本: v2024.05.13.03
+console.log("main.js 加载完成");
+
 // 渲染项目列表
 function renderProjects() {
+    console.log("开始渲染项目，所有项目：", projects.length);
     const projectsGrid = document.getElementById('projects-grid');
     projectsGrid.innerHTML = '';
     
+    // 强制过滤，只显示特定项目
+    const targetProjectName = "app/小程序原型";
+    console.log("目标项目名称：", targetProjectName);
+    
+    const visibleProjects = projects.filter(project => project.name === targetProjectName);
+    console.log("筛选后可见项目：", visibleProjects);
+    
+    if (visibleProjects.length === 0) {
+        document.getElementById('projects-grid').innerHTML = `<div class="no-projects">未找到"${targetProjectName}"项目</div>`;
+        console.error("未找到目标项目：", targetProjectName);
+        return;
+    }
+    
+    // 继续处理可见项目
+    const pinnedProjects = visibleProjects.filter(project => project.isPinned);
+    const unpinnedProjects = visibleProjects.filter(project => !project.isPinned);
+    
     // 显示项目列表标题
     document.querySelector('h2').style.display = 'block';
-    
-    // 过滤项目：只显示app/小程序原型项目，且确保它没有被隐藏
-    const visibleProjects = projects.filter(project => 
-        project.name === "app/小程序原型" && project.hidden !== true
-    );
     
     // 如果找到了可见项目
     if (visibleProjects.length > 0) {
@@ -29,7 +45,7 @@ function renderProjects() {
         });
     } else {
         // 如果没有找到可见项目，显示提示信息
-        projectsGrid.innerHTML = '<div class="empty-message">没有找到可显示的项目</div>';
+        projectsGrid.innerHTML = '<div class="empty-message">没有找到app/小程序原型项目</div>';
     }
 }
 
